@@ -4,6 +4,7 @@ import pandas as pd
 import pickle
 
 app = FastAPI(title="Customer Churn Prediction API")
+# FastAPI churn prediction endpoint implemented and tested
 
 
 # Load trained XGBoost model
