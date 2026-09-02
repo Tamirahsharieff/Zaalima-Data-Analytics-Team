@@ -1,5 +1,6 @@
 from fastapi import FastAPI
 from pydantic import BaseModel
+from typing import List
 import pandas as pd
 import pickle
 
@@ -82,7 +83,6 @@ def home():
 
 @app.post("/predict")
 def predict_churn(customer: CustomerData):
-
     # Convert Pydantic object to dictionary
     customer_data = customer.model_dump()
 
@@ -109,3 +109,12 @@ def predict_churn(customer: CustomerData):
         "churn_prediction": int(prediction),
         "churn_probability": float(probability)
     }
+@app.post("/predict/batch")
+def predict_batch(customers: List[CustomerData]):
+    results = []
+
+    for customer in customers:
+        result = predict_churn(customer)
+        results.append(result)
+
+    return results
