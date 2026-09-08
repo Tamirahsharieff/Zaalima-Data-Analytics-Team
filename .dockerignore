@@ -1,0 +1,10 @@
+.venv
+venv
+_pycache_
+.git
+.github
+.ipynb_checkpoints
+*.csv
+*.xlsx
+.env
+notebooks
